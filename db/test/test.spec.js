@@ -7,7 +7,7 @@ chai.should();
 
 async function request(path) {
   return rp({
-    url: `http://localhost:3000/transactions`,
+    url: `http://localhost:4000/transactions`,
     method: 'GET',
     json: true,
     resolveWithFullResponse: true, // promise resolves with full response not just body. 

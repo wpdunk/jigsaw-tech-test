@@ -7,13 +7,6 @@ then
   kill -9 ${port}
 fi
 
-# port=$(lsof -ti tcp:4000);
-# if [ ! -z $port ]
-# then 
-#   echo "Killing DB Process on tcp:4000"
-#   kill -9 ${port}
-# fi
-
 node index.js &
 SERVER_PID=$!;
 echo "SERVER_PID: ${SERVER_PID}"

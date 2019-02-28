@@ -1,10 +1,13 @@
 const express = require('express');
-
-const transactionsRouter = require('./routers/transactions');
+const router = express.Router();
 
 const app = express();
 
-app.use('/transactions', transactionsRouter)
+const data = require('./data');
+
+router.get('/', async (_, res) => res.status(200).json(data));
+
+app.use('/transactions', router)
 
 // handle errors
 app.use((error, _, res, next) => {
