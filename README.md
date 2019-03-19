@@ -32,9 +32,9 @@ returns the number, total and average value of all transactions grouped by the t
 ```json
 {
   "food": {
-    "number": 10,
-    "total": 400,
-    "average": 40
+    "totalNumber": 10,
+    "totalValue": 400,
+    "averageValue": 40
   }
 }
 ```
@@ -46,10 +46,14 @@ returns a daily cashflow of all transactions grouped by day. Ignore days for whi
 ```json
 {
   "01/01/2019": {
-    "value": 200
+    "totalNumber": 10,
+    "totalValue": 400,
+    "averageValue": 40
   },
   "02/01/2019": {
-    "value": 190
+    "totalNumber": 10,
+    "totalValue": 400,
+    "averageValue": 40
   },
 }
 ```
@@ -69,9 +73,9 @@ Ideally we'd find a way to group these together:
 ```json
 {
   "Tescos Ltd": {
-    "number": 10,
-    "total": 400,
-    "average": 40
+    "totalNumber": 10,
+    "totalValue": 400,
+    "averageValue": 40
   }
 }
 ```
@@ -91,4 +95,4 @@ docker run -p 4000:4000 test_data_layer
 
 Routes on data layer:
 
-- `GET http://locahost:4000/transactions` returns a list of transactions
+- `GET http://localhost:4000/transactions` returns a list of transactions
