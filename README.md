@@ -1,6 +1,6 @@
 # Insights Service
 
-As part of out latest MVP build we need to present a user with some insights about their spending. A list of transactions for a user can be retrieved from `http://localhost:4000/transactions`.
+As part of out latest MVP build we need to present a user with some insights about their spending. A list of transactions for a user can be retrieved from the db at `http://localhost:4000/transactions`.
 
 Transactions:
 
@@ -64,7 +64,7 @@ returns the number, total and average value of all transactions grouped by the m
 
 ```text
 Tescos Ltd
-Tescos London Bridge Ltd
+Tescos London Bridge Ltdå
 Islington Tescos Metro Ltd
 ```
 
@@ -89,8 +89,7 @@ Ideally we'd find a way to group these together:
 ## Running the Data layer
 
 ```bash
-docker build -t test_data_layer ./db
-docker run -p 4000:4000 test_data_layer
+cd db && npm start
 ```
 
 Routes on data layer:
