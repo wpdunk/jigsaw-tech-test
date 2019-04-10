@@ -76,6 +76,13 @@ returns a daily cashflow of all transactions grouped by day. For days on which t
 
 3. Is a suprise! Will work on it together in person :)
 
+
+## To Get Started
+
+1. `git clone https://github.com/jigsawxyz/recruitment-uk.git`
+2. `npm i`
+3. `npm t`
+
 ## Some notes
 
 1. all values are integer. Don't worry about dealing with floating point precisions, the front end can deal with the presentation logic.
