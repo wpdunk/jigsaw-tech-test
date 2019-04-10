@@ -1,8 +1,8 @@
 # Insights Service
 
-As part of out latest MVP build we need to present a user with some insights about their spending. A list of transactions for a user can be retrieved from the db at `http://localhost:4000/transactions`.
+As part of out latest MVP build we need to present a user with some insights about their spending. We need to build a server that returns JSON formatted insights. A list of transactions for a user can be retrieved at `GET https://transactions.spokedev.xyz/transactions`. (Make sure you use https!!!). The server should fetch this list, then calculate the insights below, and return them in the body of the response with a 200 response code. 
 
-Transactions:
+The api returns an array of transactions:
 
 ```json
 [
@@ -23,9 +23,17 @@ Transactions:
 ]
 ```
 
-From this list we'll need to expose the following routes on the service, which calculate different insights about a users spending depending on which route is called:
+From this list we'll need to build a server that exposes the following routes, which calculate different insights about a users spending depending on which route is called:
 
 1. `GET /insights/categories`
+
+User Story: 
+```
+As a User
+So that I can gain an understanding of my finances
+I want to see an aggregated list of my transactions by category
+```
+
 
 returns the number, total and average value of all transactions grouped by the transaction category.
 
@@ -35,13 +43,21 @@ returns the number, total and average value of all transactions grouped by the t
     "totalNumber": 10,
     "totalValue": 400,
     "averageValue": 40
-  }
+  },
+  ...
 }
 ```
 
 2. `GET /insights/cashflow`
 
-returns a daily cashflow of all transactions grouped by day. Ignore days for which there is no data.
+User Story:
+```
+As a User
+So that I can gain an understanding of if i will run out of money
+I want to see a breakdown of my spending by month
+```
+
+returns a daily cashflow of all transactions grouped by day. For days on which there is no data return 0 for all fields. 
 
 ```json
 {
@@ -58,40 +74,17 @@ returns a daily cashflow of all transactions grouped by day. Ignore days for whi
 }
 ```
 
-3. `GET /insights/merchants (stretch goal)`
-
-returns the number, total and average value of all transactions grouped by the merchant. We don't have any data sanitation so merchants can have different names e.g.
-
-```text
-Tescos Ltd
-Tescos London Bridge Ltdå
-Islington Tescos Metro Ltd
-```
-
-Ideally we'd find a way to group these together:
-
-```json
-{
-  "Tescos Ltd": {
-    "totalNumber": 10,
-    "totalValue": 400,
-    "averageValue": 40
-  }
-}
-```
+3. Is a suprise! Will work on it together in person :)
 
 ## Some notes
 
-1. all values are integer. Don't worry about dealing with floating point precisions, the FE can deal with the presentation logic.
-2. you can use any npm package you like, but only with good reason!
+1. all values are integer. Don't worry about dealing with floating point precisions, the front end can deal with the presentation logic.
+2. you can use any npm package you like, but only with good reason! This includes the testing framework which you can change :)
 3. We've provided some boilerplate code, but feel free to rearrange as you want...
+4. There's a little test script we've written which will start the server, run the tests and pull it down again. But feel free to orchastrate your tests however you want!
 
-## Running the Data layer
+## Things we value
 
-```bash
-cd db && npm start
-```
-
-Routes on data layer:
-
-- `GET http://localhost:4000/transactions` returns a list of transactions
+1. Well tested code. Whatever framework you use, we like testing our code to have certainty it works
+2. Simple code. It shouldn't take a PHD to understand code. If it's that complicated, we've done something wrong.
+3. Code reuse. If there's an option to reuse some code, go for it!
