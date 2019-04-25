@@ -1,6 +1,8 @@
+# Ed & Will
+
 # Insights Service
 
-As part of out latest MVP build we need to present a user with some insights about their spending. We need to build a server that returns JSON formatted insights. A list of transactions for a user can be retrieved at `GET https://transactions.spokedev.xyz/transactions`. (Make sure you use https!!!). The server should fetch this list, then calculate the insights below, and return them in the body of the response with a 200 response code. 
+As part of out latest MVP build we need to present a user with some insights about their spending. We need to build a server that returns JSON formatted insights. A list of transactions for a user can be retrieved at `GET https://transactions.spokedev.xyz/transactions`. (Make sure you use https!!!). The server should fetch this list, then calculate the insights below, and return them in the body of the response with a 200 response code.
 
 The api returns an array of transactions:
 
@@ -27,13 +29,13 @@ From this list we'll need to build a server that exposes the following routes, w
 
 1. `GET /insights/categories`
 
-User Story: 
+User Story:
+
 ```
 As a User
 So that I can gain an understanding of my finances
 I want to see an aggregated list of my transactions by category
 ```
-
 
 returns the number, total and average value of all transactions grouped by the transaction category.
 
@@ -51,13 +53,14 @@ returns the number, total and average value of all transactions grouped by the t
 2. `GET /insights/cashflow`
 
 User Story:
+
 ```
 As a User
 So that I can gain an understanding of if i will run out of money
 I want to see a breakdown of my spending by month
 ```
 
-returns a daily cashflow of all transactions grouped by day. For days on which there is no data return 0 for all fields. 
+returns a daily cashflow of all transactions grouped by day. For days on which there is no data return 0 for all fields.
 
 ```json
 {
@@ -70,12 +73,11 @@ returns a daily cashflow of all transactions grouped by day. For days on which t
     "totalNumber": 10,
     "totalValue": 400,
     "averageValue": 40
-  },
+  }
 }
 ```
 
 3. Is a suprise! Will work on it together in person :)
-
 
 ## To Get Started
 

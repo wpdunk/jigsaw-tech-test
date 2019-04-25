@@ -1,6 +1,7 @@
 const chai = require("chai");
 const rp = require("request-promise");
 const categoriesHandler = require("../src/handlers/categoriesHandler.js");
+const cashflowHandler = require("../src/handlers/cashflowHandler.js");
 
 chai.should();
 
@@ -84,5 +85,31 @@ describe("categoriesHandler", () => {
         Groceries: { totalNumber: 2, totalValue: 4753, averageValue: 2377 }
       })
     );
+  });
+
+  describe("cashflowHandler", () => {
+    it.only("formats responses", () => {
+      let sampleData = [
+        {
+          id: 1,
+          amount: 1798,
+          merchant: "Sainsburys",
+          category: "Groceries",
+          paymentDate: "2019-02-14T10:40:33.516Z"
+        },
+        {
+          id: 2,
+          amount: 2955,
+          merchant: "Tescos Ltd",
+          category: "Groceries",
+          paymentDate: "2019-02-14T10:40:33.517Z"
+        }
+      ];
+      JSON.stringify(cashflowHandler.format(sampleData)).should.equal(
+        JSON.stringify({
+          "2019-02-14": { totalNumber: 2, totalValue: 4753, averageValue: 2377 }
+        })
+      );
+    });
   });
 });
