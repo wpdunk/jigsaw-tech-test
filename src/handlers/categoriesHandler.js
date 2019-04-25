@@ -1,17 +1,26 @@
 const format = function(data) {
-  console.log(">", data);
-  console.log(">>", data[0].category);
   let result = {};
 
-  result = {
-    Groceries: {
-      totalNumber: data.length,
-      totalValue: data[0].amount,
-      averageValue: Math.round(data[0].amount / data.length)
-    }
-  };
-  console.log(">>>", result);
+  data.forEach(function(transaction) {
+    if (!(transaction.category in result)) {
+      result[transaction.category] = {
+        totalNumber: 1,
+        totalValue: transaction.amount,
+        averageValue: transaction.amount
+      };
+    } else {
+      let category = result[transaction.category];
 
+      result[transaction.category] = {
+        totalNumber: category.totalNumber + 1,
+        totalValue: category.totalValue + transaction.amount,
+        averageValue: Math.round(
+          (category.totalValue + transaction.amount) /
+            (category.totalNumber + 1)
+        )
+      };
+    }
+  });
   return result;
 };
 

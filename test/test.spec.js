@@ -62,4 +62,27 @@ describe("categoriesHandler", () => {
       })
     );
   });
+  it("formats multiple responses", () => {
+    let sampleData = [
+      {
+        id: 1,
+        amount: 1798,
+        merchant: "Sainsburys",
+        category: "Groceries",
+        paymentDate: "2019-02-14T10:40:33.516Z"
+      },
+      {
+        id: 2,
+        amount: 2955,
+        merchant: "Tescos Ltd",
+        category: "Groceries",
+        paymentDate: "2019-02-14T10:40:33.517Z"
+      }
+    ];
+    JSON.stringify(categoriesHandler.format(sampleData)).should.equal(
+      JSON.stringify({
+        Groceries: { totalNumber: 2, totalValue: 4753, averageValue: 2377 }
+      })
+    );
+  });
 });
