@@ -1,25 +1,28 @@
-const express = require('express');
+const express = require("express");
+const axios = require("axios");
+const url = "https://transactions.spokedev.xyz/transactions";
 const router = express.Router();
+const categoriesHandler = require("../handlers/categoriesHandler.js");
 
-router.get('/categories', async (req, res, next) => {
+router.get("/categories", async (req, res, next) => {
   try {
-    res.status(501).json({ message: 'Not Implemented' });
+    res.status(501).json({ message: "Not Implemented" });
   } catch (err) {
     return next(err);
   }
 });
 
-router.get('/cashflow', async (req, res, next) => {
+router.get("/cashflow", async (req, res, next) => {
   try {
-    res.status(501).json({ message: 'Not Implemented' });
+    res.status(501).json({ message: "Not Implemented" });
   } catch (err) {
     return next(err);
   }
 });
 
-router.get('/merchants', async (req, res, next) => {
+router.get("/merchants", async (req, res, next) => {
   try {
-    res.status(501).json({ message: 'Not Implemented' });
+    res.status(501).json({ message: "Not Implemented" });
   } catch (err) {
     return next(err);
   }
