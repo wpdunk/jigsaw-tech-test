@@ -6,7 +6,14 @@ const categoriesHandler = require("../handlers/categoriesHandler.js");
 
 router.get("/categories", async (req, res, next) => {
   try {
-    res.status(501).json({ message: "Not Implemented" });
+    return axios
+      .get(url)
+      .then(response => {
+        return categoriesHandler.format(response.data);
+      })
+      .then(result => {
+        res.status(200).json(result);
+      });
   } catch (err) {
     return next(err);
   }
